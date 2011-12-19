@@ -73,6 +73,19 @@ A `-<cloref1>` B instead of A -> B. `<cloref1>` A instead of A.
     = equals
     <> not equals
 
+# algebraic data type
 
+**datatype** is keyword.
 
+    datatype = TypeName
+        | ConstructorName of type
+        | ConstructorName2 of (type1, type2)
+
+**case+ of =>** 
+
+    case+ x of
+        | ConstructorName(x) => x + 1 //different x.
+        | ConstructorName2(x,y) => x + y
+
+ 
 
