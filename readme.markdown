@@ -60,7 +60,7 @@ Trying to learn [ATS](http://www.ats-lang.org/)
 
 # closure
 
-A `-<cloref1>` B instead of A -> B. `<cloref1>` A instead of A.
+A `-<cloref1>` B instead of A `->` B. `<cloref1> A` instead of `A`.
 
     fn addx(x:int):int -<cloref1> int = let
         fn f(y:int):<cloref1> int = x + y
@@ -87,5 +87,24 @@ A `-<cloref1>` B instead of A -> B. `<cloref1>` A instead of A.
         | ConstructorName(x) => x + 1 //different x.
         | ConstructorName2(x,y) => x + y
 
- 
+# function templates
 
+**fun{Foo,Bar:t@ype} name(args)**
+
+works for boxed and unboxed args.
+
+    fun{A,B:t@ype} swap_pair(ab:(A,B)):(B:A) = (ab.1, ab.0)
+    swap_pair<string,int>(@("hello", 42))
+    ==> @(42, "hello")
+
+# polymorphic functions
+
+**fun name{Foo,Bar:type}(args)**
+
+only works with boxed args. Type args (Foo,Bar..) can be inferred. 
+
+    fun swap_pair{A,B:type}(ab:(A,B)):(B:A) = (ab.1, ab.0)
+    swap_pair{string,int}(@("hello", 42))
+    ==> @(42, "hello")
+    swap_pair{...}(@("hello", 42)) //type args inferred.
+    ==> @(42, "hello")
