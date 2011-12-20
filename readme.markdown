@@ -89,7 +89,7 @@ A `-<cloref1>` B instead of A `->` B. `<cloref1> A` instead of `A`.
 
 # function templates
 
-**fun{Foo,Bar:t@ype} name(args)**
+**fun**{Foo,Bar:**t@ype**} name(args)
 
 works for boxed and unboxed args.
 
@@ -99,7 +99,7 @@ works for boxed and unboxed args.
 
 # polymorphic functions
 
-**fun name{Foo,Bar:type}(args)**
+**fun** name{Foo,Bar:**type**}(args)
 
 only works with boxed args. Type args (Foo,Bar..) can be inferred. 
 
